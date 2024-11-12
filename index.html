@@ -36,25 +36,36 @@
     let submitBtn = document.querySelector("#submitBtn");
     let input = document.querySelector("#input");
 
-    submitBtn.addEventListener("click", function() {
-      let p = document.createElement("p");
-      p.innerText = input.value;
-      input.value = "";
+    function addTask() {
+        let p = document.createElement("p");
+        p.innerText = input.value;
+        input.value = "";
 
-      let btn = document.createElement("button");
-      btn.innerText = "Delete";
-      btn.classList.add("task_btn");
+        let btn = document.createElement("button");
+        btn.innerText = "Delete";
+        btn.classList.add("task_btn");
 
-      let div = document.createElement("div");
+        let div = document.createElement("div");
 
-      btn.addEventListener("click", function() {
-        div.remove();
-      });
+        btn.addEventListener("click", function() {
+            div.remove();
+        });
 
-      document.body.append(div);
-      div.append(p);
-      div.append(btn);
-    });
+        if (p.innerText === "") {
+            alert("You did not enter any task");
+        } else {
+            document.body.append(div);
+            div.append(p);
+            div.append(btn);
+        }
+    }
+
+    submitBtn.addEventListener("click", addTask);
+    document.addEventListener("keydown", function(e) {
+        if (e.code === "Enter") {
+            addTask();
+        }
+    })
   </script>
 </body>
 </html>
