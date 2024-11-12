@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo List</title>
+    <style>
+      body {
+        width: 300px;
+        margin: auto;
+      }
+      input {
+        width: 230px;
+      }
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      button {
+        height: 21px;
+        width: 57px;
+      }
+    </style>
+</head>
+<body>
+  <div>
+    <input id="input" type="text" placeholder="Enter your task">
+    <button id="submitBtn">Submit</button>
+  </div>
+
+  <script>
+    let submitBtn = document.querySelector("#submitBtn");
+    let input = document.querySelector("#input");
+
+    submitBtn.addEventListener("click", function() {
+      let p = document.createElement("p");
+      p.innerText = input.value;
+      input.value = "";
+
+      let btn = document.createElement("button");
+      btn.innerText = "Delete";
+      btn.classList.add("task_btn");
+
+      let div = document.createElement("div");
+
+      btn.addEventListener("click", function() {
+        div.remove();
+      });
+
+      document.body.append(div);
+      div.append(p);
+      div.append(btn);
+    });
+  </script>
+</body>
+</html>
