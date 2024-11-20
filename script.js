@@ -1,40 +1,39 @@
-const inputBox = document.getElementById("input-box");
-const listContainer = document.getElementById("list-container");
-const btn = document.getElementById("add-task-btn");
+let inputBox = document.getElementById("input-box");
+let listContainer = document.getElementById("list-container");
+let btn = document.getElementById("add-task-btn");
 
-btn.addEventListener("click", addTask);
+let todoList = [];
 
-function addTask() {
-    if (inputBox.value === "") {
-        alert("You did not enter any task!");
-    } else {
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
+function renderTodoList() {
+    if (todoList.length > 0) {
+            const latestTask = todoList[todoList.length - 1];
+            let li = document.createElement("li");
+            li.innerHTML = latestTask;
+            listContainer.appendChild(li);
 
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
-    }
+            let span = document.createElement("span");
+            span.innerHTML = "\u00d7";
+            li.appendChild(span);
+        }
     inputBox.value = "";
-    saveData();
 }
+
+btn.addEventListener("click", e => {
+        todoList.push(inputBox.value);
+        renderTodoList();
+});
+
+document.body.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+        todoList.push(inputBox.value);
+        renderTodoList();
+    }
+});
 
 listContainer.addEventListener("click", function (e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
-        saveData()
     } else if (e.target.tagName === "SPAN") {
         e.target.parentElement.remove();
-        saveData();
     }
 });
-
-function saveData() {
-    localStorage.setItem("data", listContainer.innerHTML);
-}
-
-function showTask() {
-    listContainer.innerHTML = localStorage.getItem("data");
-}
-showTask();
