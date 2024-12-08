@@ -15,7 +15,7 @@ export class View {
 
         const editImg = document.createElement("img");
         editImg.classList.add("edit");
-        editImg.src = "images/edit_btn.png"; // Замініть на шлях до вашого зображення
+        editImg.src = "images/edit_btn.png"; 
         editImg.alt = "Edit";
 
         li.appendChild(editImg);

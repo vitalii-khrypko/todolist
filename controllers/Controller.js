@@ -3,6 +3,9 @@ export class Controller {
         this.model = model;
         this.view = view;
 
+        // Завантаження завдань з localStorage
+        this.model.loadTasks();
+
         // Встановлення обробників подій
         this.view.addTaskBtn.addEventListener("click", () => this.addTask());
         this.view.listContainer.addEventListener("click", e => this.handleListClick(e));
@@ -16,6 +19,7 @@ export class Controller {
         const taskText = this.view.inputBox.value.trim();
         if (taskText) {
             this.model.addTask(taskText);
+            this.model.saveTasks(); // Збереження до localStorage
             this.view.renderTasks(this.model.getTasks());
             this.view.clearInput();
         }
@@ -47,6 +51,7 @@ export class Controller {
         inputField.addEventListener("blur", () => {
             const updatedTask = inputField.value.trim();
             this.model.editTask(index, updatedTask);
+            this.model.saveTasks(); // Збереження до localStorage
             this.view.renderTasks(this.model.getTasks());
         });
 
@@ -61,6 +66,7 @@ export class Controller {
         const li = deleteButton.parentElement;
         const index = Array.from(this.view.listContainer.children).indexOf(li);
         this.model.removeTask(index);
+        this.model.saveTasks(); // Збереження до localStorage
         this.view.renderTasks(this.model.getTasks());
     }
 

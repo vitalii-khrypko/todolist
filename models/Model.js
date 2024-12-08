@@ -1,21 +1,34 @@
 export class Model {
     constructor() {
-        this.todoList = [];
+        this.tasks = [];
     }
 
-    addTask(task) {
-        this.todoList.push(task);
+    loadTasks() {
+        const tasksFromStorage = localStorage.getItem("tasks");
+        this.tasks = tasksFromStorage ? JSON.parse(tasksFromStorage) : [];
     }
 
-    editTask(index, updatedTask) {
-        this.todoList[index] = updatedTask;
-    }
-
-    removeTask(index) {
-        this.todoList.splice(index, 1);
+    saveTasks() {
+        localStorage.setItem("tasks", JSON.stringify(this.tasks));
     }
 
     getTasks() {
-        return this.todoList;
+        return this.tasks;
+    }
+
+    addTask(task) {
+        this.tasks.push(task);
+    }
+
+    editTask(index, newTask) {
+        if (index >= 0 && index < this.tasks.length) {
+            this.tasks[index] = newTask;
+        }
+    }
+
+    removeTask(index) {
+        if (index >= 0 && index < this.tasks.length) {
+            this.tasks.splice(index, 1);
+        }
     }
 }
