@@ -17,3 +17,8 @@ This project is a simple ToDo list application built with JavaScript, allowing u
 1. Clone the repository to your local machine:
    ```bash
    git clone https://github.com/vitalii-khrypko/todolist.git
+2. Open the index.html file in your browser.
+No additional dependencies or setup are required, so you can run the project directly in your browser.
+
+## Contributors
+**Vitalii Khrypko** - Project author.
