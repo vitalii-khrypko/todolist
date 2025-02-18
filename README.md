@@ -18,6 +18,7 @@ Todolist is a task management application built with **JavaScript** following th
   - **Controller** – connects the Model and View, managing user interactions.
  
 ## Project Structure
+```
 todolist/
 │── index.html
 │── styles.css
@@ -25,6 +26,7 @@ todolist/
 │── models/       # Business logic (Task model)
 │── views/        # UI rendering logic
 │── controllers/  # Handles interactions between model and view
+```
 
 ## How to Run the Project
 1. Clone the repository to your local machine:
