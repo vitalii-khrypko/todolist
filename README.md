@@ -1,17 +1,30 @@
-# ToDo List
+# Todolist (MVC Architecture)
 
-This project is a simple ToDo list application built with JavaScript, allowing users to manage tasks by adding, editing, and deleting them. It provides a simple and intuitive interface for organizing tasks efficiently.
+Todolist is a task management application built with **JavaScript** following the **Model-View-Controller (MVC) architecture**. This structure ensures better code organization, separation of concerns, and maintainability.
 
 ## Technologies
-- **HTML5** - for the structure of the page.
-- **CSS3** - for styling the interface.
-- **JavaScript** - for implementing the ToDo list functionality.
+- **JavaScript** – core programming language.
+- **MVC Architecture** – for structured application logic.
+- **HTML5 & CSS3** – for layout and styling.
+- **LocalStorage** – for persisting tasks across sessions.
 
 ## Features
-- Add new tasks to the list.
+- Add, edit, and delete tasks.
 - Mark tasks as completed.
-- Edit or delete existing tasks.
-- Tasks are stored in the browser's local storage, so they persist even after the page is refreshed.
+- Data persistence using **LocalStorage**.
+- Follows the **MVC pattern**, separating logic into:
+  - **Model** – manages the data and business logic.
+  - **View** – handles the UI representation.
+  - **Controller** – connects the Model and View, managing user interactions.
+ 
+## Project Structure
+todolist/
+│── index.html
+│── styles.css
+│── script.js
+│── models/       # Business logic (Task model)
+│── views/        # UI rendering logic
+│── controllers/  # Handles interactions between model and view
 
 ## How to Run the Project
 1. Clone the repository to your local machine:
